@@ -6,18 +6,18 @@ import Lib.*;
  */
 
 public class BulkDiscountStrategy implements DiscountStrategy {
-    private final int minimumQauntity;
+    private final int minimumQuantity;
     private final double discountPercentage;
 
     public BulkDiscountStrategy(int minimumQauntity, double discountPercentage){
-        this.minimumQauntity = minimumQauntity;
+        this.minimumQuantity = minimumQauntity;
         this.discountPercentage = discountPercentage;
     }
 
     @Override
     public double calculatePrice(CartItem item) {
         double originalPrice = item.getProduct().getPrice()*item.getQuantity();
-        if(item.getQuantity() >= minimumQauntity){
+        if(item.getQuantity() >= minimumQuantity){
             return originalPrice * (1.0 - discountPercentage);
         }
         return originalPrice ;

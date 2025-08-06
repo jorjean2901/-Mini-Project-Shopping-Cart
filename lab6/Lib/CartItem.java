@@ -22,14 +22,15 @@ public class CartItem {
 
    
 
-    private void checkRep(){
-        if(product == null){
-            throw new RuntimeException("RI violated : productId cannot be null.");
+   private void checkRep(){
+        if (product == null) {
+            throw new RuntimeException("RI violated: product  cannot be null");
         }
-        if (quantity <= 0){
-            throw new RuntimeException("RI violated : quantity must be nagetive.");
+        if (quantity <=0) {
+            throw new RuntimeException("RI violated: quantity must be positive");
         }
     }
+
 
     /**
     * สร้างรายการสินค้าในตะกร้า

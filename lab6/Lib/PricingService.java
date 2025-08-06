@@ -7,11 +7,10 @@ import java.util.ArrayList;
  * คลาสสำหรับจัดการโปรโมชันและคำนวณราคา
  */
 
-
 public class PricingService {
     private record StrategyRule(String sku, DiscountStrategy strategy){}
     private final ArrayList<StrategyRule> strategies = new ArrayList<>();
-    private final DiscountStrategy defaulStrategy = new DefaultPricingStrategy();
+    private final DiscountStrategy defaultStrategy = new DefaultPricingStrategy();
 
     /**
      * ลงทะเบียนกลยุทธ์ส่วนลดสำหรับสินค้า SKU ที่กำหนด
@@ -34,11 +33,11 @@ public class PricingService {
         strategies.add(new StrategyRule(sku, strategy));
     }
 
-     /**
-     * คำนวณราคาสุทธิของสินค้า 1 รายการโดยใช้กลยุทธ์ที่เหมาะสม
-     * @param item รายการสินค้าที่ต้องการคำนวณราคา
-     * @return ราคาสุทธิหลังหักส่วนลด
-     */
+      /**
+      * คำนวณราคาสุทธิของสินค้า 1 รายการโดยใช้กลยุทธ์ที่เหมาะสม
+      * @param item รายการสินค้าที่ต้องการคำนวณราคา
+      * @return ราคาสุทธิหลังหักส่วนลด
+      */
 
     public double calculateItemPrice(CartItem item){
         String sku = item.getProduct().getProductId();
@@ -47,6 +46,6 @@ public class PricingService {
                 return rule.strategy().calculatePrice(item);
             }
         }
-        return defaulStrategy.calculatePrice(item);
+        return defaultStrategy.calculatePrice(item);
     }
 }

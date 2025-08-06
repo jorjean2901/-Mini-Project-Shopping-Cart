@@ -1,6 +1,6 @@
 package Lib.Discount;
 
-import Lib.CartItem;
+import Lib.*;
 /*
  *  กลยุทธ์ส่วนลด BOGO ( 1 แถม 1)
  */
